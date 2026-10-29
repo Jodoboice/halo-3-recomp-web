@@ -228,7 +228,7 @@ int main(int argc, char* argv[])
         // The loader's buffer can be shorter than image.size (trailing BSS);
         // the rest is zero.
         std::vector<char> flat(image.size);
-        memcpy(flat.data(), image.data.get(), std::min<size_t>(image.dataSize, flat.size()));
+        memcpy(flat.data(), image.data.get(), std::min<size_t>(image.size, flat.size()));
 
         std::ofstream out(dumpPath, std::ios::binary);
         out.write(flat.data(), flat.size());
